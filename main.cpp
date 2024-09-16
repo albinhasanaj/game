@@ -1,18 +1,21 @@
 #include <iostream>
-#include "allclasses.h"
+#include "playercharacter.h"
 
 int main() {
-    Warrior warr1;
-    Wizard wiz1;
-    Clerik cler1;
-    Rogue rog1;
+    PlayerCharacter p1(new Warrior());
+    PlayerCharacter p2(new Wizard());
+    PlayerCharacter p3(new Rogue());
+    PlayerCharacter p4(new Cleric());
 
-    std::cout << "Warrior\n" << "HP: " << warr1.getCurrentHP() << "/" << warr1.getMaxHP() << "\n" << "Strength: " << warr1.getStrength() << "\n" << "Intellect: " << warr1.getIntellect() << "\n\n";
 
-    std::cout << "Wizard\n" << "HP: " << wiz1.getCurrentHP() << "/" << wiz1.getMaxHP() << "\n" << "Strength: " << wiz1.getStrength() << "\n" << "Intellect: " << wiz1.getIntellect() << "\n\n";
+    std::cout << p1.getClassName() << std::endl;
+    std::cout << p2.getClassName() << std::endl;
+    std::cout << p3.getClassName() << std::endl;
+    std::cout << p4.getClassName() << std::endl;
 
-    std::cout << "Clerik\n" << "HP: " << cler1.getCurrentHP() << "/" << cler1.getMaxHP() << "\n" << "Strength: " << cler1.getStrength() << "\n" << "Intellect: " << cler1.getIntellect() << "\n\n";
 
-    std::cout << "Rogue\n" << "HP: " << rog1.getCurrentHP() << "/" << rog1.getMaxHP() << "\n" << "Strength: " << rog1.getStrength() << "\n" << "Intellect: " << rog1.getIntellect() << "\n\n";
+
+
     return 0;
-}
+
+};
