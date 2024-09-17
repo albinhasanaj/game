@@ -69,68 +69,22 @@ protected:
         HP->increase((WellType)(BASEHP / 2.f));\
         increaseStats((StatType)((BASESTR + 1u) / 2.f), (StatType)((BASEINT + 1u) / 2.f));};
 
-class Cleric : public PlayerCharacterDelegate {
-public:
-    static const WellType BASEHP = (WellType)14u;
-    static const StatType BASESTR = (StatType)2u;
-    static const StatType BASEINT = (StatType)3u;
+#define CHARACTERCLASS(classname, basehp, basestr, baseint) \
+    class classname: public PlayerCharacterDelegate {\
+    public:\
+        static const WellType BASEHP = (WellType)basehp;\
+        static const StatType BASESTR = (StatType)basestr;\
+        static const StatType BASEINT = (StatType)baseint;\
+        classname()PCCONSTRUCT;\
+        std::string getClassName() override { return std::string(#classname); };\
+    private:\
+        LEVELUP;\
+    };
 
-    Cleric()PCCONSTRUCT;
-
-    std::string getClassName() override { return std::string("Cleric"); };
-
-
-private:
-    LEVELUP;
-};
-
-class Rogue : public PlayerCharacterDelegate {
-public:
-    static const WellType BASEHP = (WellType)12u;
-    static const StatType BASESTR = (StatType)3u;
-    static const StatType BASEINT = (StatType)5u;
-
-    Rogue()PCCONSTRUCT;
-
-    std::string getClassName() override { return std::string("Rogue"); };
-
-
-private:
-    LEVELUP;
-};
-
-class Warrior : public PlayerCharacterDelegate {
-public:
-    static const WellType BASEHP = (WellType)12u;
-    static const StatType BASESTR = (StatType)3u;
-    static const StatType BASEINT = (StatType)5u;
-
-    Warrior()PCCONSTRUCT;
-
-    std::string getClassName() override { return std::string("Warrior"); };
-
-
-private:
-    LEVELUP;
-};
-
-
-class Wizard : public PlayerCharacterDelegate {
-public:
-    static const WellType BASEHP = (WellType)10u;
-    static const StatType BASESTR = (StatType)1u;
-    static const StatType BASEINT = (StatType)4u;
-
-    Wizard()PCCONSTRUCT;
-
-    std::string getClassName() override { return std::string("Wizard"); };
-
-
-private:
-    LEVELUP;
-};
-
-
+CHARACTERCLASS(Cleric, 14, 3, 5)
+CHARACTERCLASS(Wizard, 10, 1, 8)
+CHARACTERCLASS(Warrior, 20, 5, 2)
+CHARACTERCLASS(Rogue, 14, 4, 4)
 
 class PlayerCharacter {
 private:
